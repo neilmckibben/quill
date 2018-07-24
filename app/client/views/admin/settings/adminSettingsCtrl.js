@@ -21,7 +21,7 @@ angular.module('reg')
 
         $scope.settings = settings;
       }
-      
+
       // Additional Options --------------------------------------
 
       $scope.updateAllowMinors = function () {
@@ -62,7 +62,7 @@ angular.module('reg')
 
         // Hack for timezone
         return moment(date).format('dddd, MMMM Do YYYY, h:mm a') +
-          " " + date.toTimeString().split(' ')[2];
+          " " + date.toTimeString().split(' ')[2] + ")";
       };
 
       // Take a date and remove the seconds.
