@@ -46,12 +46,12 @@
         <div
           ng-if="dashState('unverified')"
           class="description">
-          <p>
+          <p style="text-align:center">
             <strong>
             Your email address ({{user.email}}) is not yet verified.
             </strong>
           </p>
-          <p>
+          <p style="text-align:center">
             {{ DASHBOARD.UNVERIFIED }}
           </p>
           <div class="ui purple button" ng-click="resendEmail()">
@@ -99,12 +99,12 @@
         <div
           ng-if="dashState('openAndSubmitted')"
           class="description">
-          <p>
+          <p style="text-align:center">
             <strong>
                 {{ DASHBOARD.SUBMITTED_TITLE }}
             </strong>
           </p>
-          <p>
+          <p style="text-align:center">
             {{ DASHBOARD.SUBMITTED }}
           </p>
           <div class="ui purple button"
@@ -244,7 +244,7 @@
           class="description"
           ng-if="dashState('declined')">
 
-          <p>
+          <p style="text-align:center">
             {{ DASHBOARD.DECLINED }}
           </p>
         </div>
