@@ -18,6 +18,7 @@ function calculateStats(){
         N: 0
       },
       schools: {},
+      majors: {},
       year: {
         '2019': 0,
         '2020': 0,
@@ -103,7 +104,7 @@ function calculateStats(){
         // Count confirmed
         newStats.confirmed += user.status.confirmed ? 1 : 0;
 
-        // Count confirmed that are mit
+        // Count confirmed that are osu
         newStats.confirmedOsu += user.status.confirmed && email === "osu.edu" ? 1 : 0;
 
         newStats.confirmedFemale += user.status.confirmed && user.profile.gender == "F" ? 1 : 0;
@@ -137,6 +138,20 @@ function calculateStats(){
         newStats.demo.schools[email].admitted += user.status.admitted ? 1 : 0;
         newStats.demo.schools[email].confirmed += user.status.confirmed ? 1 : 0;
         newStats.demo.schools[email].declined += user.status.declined ? 1 : 0;
+		
+        // Count majors -- Testing
+        if (!newStats.demo.majors[email]){
+          newStats.demo.majors[email] = {
+            submitted: 0,
+            admitted: 0,
+            confirmed: 0,
+            declined: 0,
+          };
+        }
+        newStats.demo.majors[email].submitted += user.status.completedProfile ? 1 : 0;
+        newStats.demo.majors[email].admitted += user.status.admitted ? 1 : 0;
+        newStats.demo.majors[email].confirmed += user.status.confirmed ? 1 : 0;
+        newStats.demo.majors[email].declined += user.status.declined ? 1 : 0;
 
         // Count graduation years
         if (user.profile.graduationYear){
@@ -207,6 +222,18 @@ function calculateStats(){
             });
           });
         newStats.demo.schools = schools;
+		
+		// Transform majors into an array of objects
+        var majors = [];
+        _.keys(newStats.demo.majors)
+          .forEach(function(key){
+            majors.push({
+              email: key,
+              count: newStats.demo.majors[key].submitted,
+              stats: newStats.demo.majors[key]
+            });
+          });
+        newStats.demo.majors = majors;
 
         // Likewise, transform the teams into an array of objects
         // var teams = [];

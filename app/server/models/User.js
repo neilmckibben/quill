@@ -24,6 +24,12 @@ var profile = {
     min: 1,
     max: 150,
   },
+  
+  major: {
+    type: String,
+    min: 1,
+    max: 150,
+  },
 
   graduationYear: {
     type: String,
@@ -333,6 +339,7 @@ schema.statics.validateProfile = function(profile, cb){
     profile.name.length > 0 &&
     profile.adult &&
     profile.school.length > 0 &&
+	profile.major.length > 0 &&
     ['2019', '2020', '2021', '2022'].indexOf(profile.graduationYear) > -1 &&
     ['M', 'F', 'O', 'N'].indexOf(profile.gender) > -1
     ));

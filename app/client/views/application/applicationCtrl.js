@@ -21,8 +21,9 @@ angular.module('reg')
         $scope.user.profile.adult = true;
       }
 
-      // Populate the school dropdown
+      // Populate the school & major dropdown
       populateSchools();
+	  populateMajors();
       _setupForm();
 
       $scope.regIsClosed = Date.now() > Settings.data.timeClose;
@@ -62,6 +63,31 @@ angular.module('reg')
                 cache: true,
                 onSelect: function(result, response) {
                   $scope.user.profile.school = result.title.trim();
+                }
+              })
+          });
+      }
+	  
+      function populateMajors(){
+        $http
+          .get('/assets/majors.csv')
+          .then(function(res){
+            $scope.majors = res.data.split('\n');
+            $scope.majors.push('Other');
+
+            var content = [];
+
+            for(i = 0; i < $scope.majors.length; i++) {
+              $scope.majors[i] = $scope.majors[i].trim();
+              content.push({title: $scope.majors[i]})
+            }
+
+            $('#major.ui.search')
+              .search({
+                source: content,
+                cache: true,
+                onSelect: function(result, response) {
+                  $scope.user.profile.major = result.title.trim();
                 }
               })
           });
@@ -129,12 +155,21 @@ angular.module('reg')
                 }
               ]
             },
+            major: {
+              identifier: 'major',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your major.'
+                }
+              ]
+            },
             year: {
               identifier: 'year',
               rules: [
                 {
                   type: 'empty',
-                  prompt: 'Please select your graduation year.'
+                  prompt: 'Please select your anticipated graduation date.'
                 }
               ]
             },
