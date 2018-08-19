@@ -21,10 +21,17 @@
         </div>
 
         <div class="field">
-          <label> Full Name </label>
+          <label> First Name </label>
           <input type="text"
-                 name="name"
-                 ng-model="user.profile.name">
+                 name="firstName"
+                 ng-model="user.profile.firstName">
+        </div>
+
+        <div class="field">
+          <label> Last Name </label>
+          <input type="text"
+                 name="lastName"
+                 ng-model="user.profile.lastName">
         </div>
 
         <div class="field" ng-show="autoFilledSchool">
@@ -54,13 +61,14 @@
             <div class="results"></div>
           </div>
         </div>
-		
+
         <div class="field">
           <label>Anticipated Graduation Date</label>
           <select
             name="year"
             ng-model="user.profile.graduationYear">
             <option value="">Anticipated Graduation Date</option>
+            <option value="2018">2018</option>
             <option value="2019">2019</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>

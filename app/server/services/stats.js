@@ -20,6 +20,7 @@ function calculateStats(){
       schools: {},
       majors: {},
       year: {
+        '2018': 0,
         '2019': 0,
         '2020': 0,
         '2021': 0,
@@ -138,7 +139,7 @@ function calculateStats(){
         newStats.demo.schools[email].admitted += user.status.admitted ? 1 : 0;
         newStats.demo.schools[email].confirmed += user.status.confirmed ? 1 : 0;
         newStats.demo.schools[email].declined += user.status.declined ? 1 : 0;
-		
+
         // Count majors -- Testing
         if (!newStats.demo.majors[email]){
           newStats.demo.majors[email] = {
@@ -222,7 +223,7 @@ function calculateStats(){
             });
           });
         newStats.demo.schools = schools;
-		
+
 		// Transform majors into an array of objects
         var majors = [];
         _.keys(newStats.demo.majors)

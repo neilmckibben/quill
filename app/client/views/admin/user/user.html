@@ -83,10 +83,17 @@
       </div>
 
       <div class="field">
-        <label> Full Name </label>
+        <label> First Name </label>
         <input type="text"
-               name="name"
-               ng-model="selectedUser.profile.name">
+               name="firstName"
+               ng-model="user.profile.firstName">
+      </div>
+
+      <div class="field">
+        <label> Last Name </label>
+        <input type="text"
+               name="lastName"
+               ng-model="user.profile.lastName">
       </div>
 
       <div class="field" ng-show="autoFilledSchool">
@@ -103,7 +110,7 @@
                name="school"
                ng-model="selectedUser.profile.school">
       </div>
-	  
+
       <div class="field">
         <label> Major </label>
         <input class="ui input"
@@ -117,6 +124,7 @@
           name="year"
           ng-model="selectedUser.profile.graduationYear">
           <option value="">Anticipated Graduation Date</option>
+          <option value="2018">2018</option>
           <option value="2019">2019</option>
           <option value="2020">2020</option>
           <option value="2021">2021</option>

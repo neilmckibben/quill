@@ -67,7 +67,7 @@ angular.module('reg')
               })
           });
       }
-	  
+
       function populateMajors(){
         $http
           .get('/assets/majors.csv')
@@ -137,12 +137,21 @@ angular.module('reg')
         $('.ui.form').form({
           inline: true,
           fields: {
-            name: {
-              identifier: 'name',
+            firstName: {
+              identifier: 'firstName',
               rules: [
                 {
                   type: 'empty',
-                  prompt: 'Please enter your name.'
+                  prompt: 'Please enter your first name.'
+                }
+              ]
+            },
+            lastName: {
+              identifier: 'lastName',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your last name.'
                 }
               ]
             },
