@@ -355,7 +355,7 @@ schema.statics.validateProfile = function(profile, cb){
     profile.adult &&
     profile.school.length > 0 &&
 	profile.major.length > 0 &&
-    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].indexOf(profile.graduationMonth) > -1
+    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].indexOf(profile.graduationMonth) > -1 &&
     ['2018', '2019', '2020', '2021', '2022'].indexOf(profile.graduationYear) > -1 &&
     ['M', 'F', 'O', 'N'].indexOf(profile.gender) > -1
     ));
