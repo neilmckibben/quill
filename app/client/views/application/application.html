@@ -96,12 +96,17 @@
             </select>
         </div>
 
-        <div class = "field">
-          <div id = "degree" class="form">
-            <input type="checkbox" name="bachelors" value="Bachelors"> Bachelor's
-            <input type="checkbox" name="masters" value="Masters"> Master's
-            <input type="checkbox" name="masters" value="PhD"> PhD
-          </div>
+        <div class="ui checkbox">
+          <input type="checkbox" id="bachelors" ng-model="user.profile.bachelors">
+          <label for="adult">Bachelor's</label>
+        </div>
+        <div class="ui checkbox" style="margin-left: 1em">
+          <input type="checkbox" id="masters" ng-model="user.profile.masters">
+          <label for="adult">Master's</label>
+        </div>
+        <div class="ui checkbox" style="margin-left: 1em">
+          <input type="checkbox" id="phd" ng-model="user.profile.phd">
+          <label for="adult">PhD</label>
         </div>
 
         <div class="field">
