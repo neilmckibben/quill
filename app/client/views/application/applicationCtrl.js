@@ -173,12 +173,21 @@ angular.module('reg')
                 }
               ]
             },
+            month: {
+              identifier: 'month',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please select your anticipated graduation month.'
+                }
+              ]
+            },
             year: {
               identifier: 'year',
               rules: [
                 {
                   type: 'empty',
-                  prompt: 'Please select your anticipated graduation date.'
+                  prompt: 'Please select your anticipated graduation year.'
                 }
               ]
             },

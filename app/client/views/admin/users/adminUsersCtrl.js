@@ -196,6 +196,9 @@ angular.module('reg')
                 name: 'Major',
                 value: user.profile.major
               },{
+                name: 'Graduation Month',
+                value: user.profile.graduationMonth
+              },{
                 name: 'Graduation Year',
                 value: user.profile.graduationYear
               },{
@@ -298,46 +301,3 @@ angular.module('reg')
       $scope.selectUser = selectUser;
 
     }]);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
