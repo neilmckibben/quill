@@ -143,13 +143,26 @@
           <select
             name="year"
             ng-model="user.profile.graduationYear">
-            <option value="">Anticipated Graduation Date</option>
+            <option value="">Anticipated Graduation Year</option>
             <option value="2018">2018</option>
             <option value="2019">2019</option>
             <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
           </select>
+      </div>
+
+      <div class="ui checkbox">
+        <input type="checkbox" id="bachelors" ng-model="user.profile.bachelors">
+        <label for="adult">Bachelor's</label>
+      </div>
+      <div class="ui checkbox" style="margin-left: 1em">
+        <input type="checkbox" id="masters" ng-model="user.profile.masters">
+        <label for="adult">Master's</label>
+      </div>
+      <div class="ui checkbox" style="margin-left: 1em">
+        <input type="checkbox" id="phd" ng-model="user.profile.phd">
+        <label for="adult">PhD</label>
       </div>
 
       <div class="field">
