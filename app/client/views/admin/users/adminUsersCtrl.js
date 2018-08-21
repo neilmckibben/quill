@@ -67,7 +67,7 @@ angular.module('reg')
         if (!user.status.checkedIn){
           swal({
             title: "Whoa, wait a minute!",
-            text: "You are about to check in " + user.profile.name + "!",
+            text: "You are about to check in " + user.profile.firstName + " " + user.profile.lastName + "!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -79,7 +79,7 @@ angular.module('reg')
                 .checkIn(user._id)
                 .success(function(user){
                   $scope.users[index] = user;
-                  swal("Accepted", user.profile.name + ' has been checked in.', "success");
+                  swal("Accepted", user.profile.firstName + " " + user.profile.lastName + ' has been checked in.', "success");
                 });
             }
           );
@@ -88,7 +88,7 @@ angular.module('reg')
             .checkOut(user._id)
             .success(function(user){
               $scope.users[index] = user;
-              swal("Accepted", user.profile.name + ' has been checked out.', "success");
+              swal("Accepted", user.profile.firstName + " " + user.profile.lastName + ' has been checked out.', "success");
             });
         }
       };
@@ -98,7 +98,7 @@ angular.module('reg')
 
         swal({
           title: "Whoa, wait a minute!",
-          text: "You are about to accept " + user.profile.name + "!",
+          text: "You are about to accept " + user.profile.firstName + " " + user.profile.lastName + "!",
           type: "warning",
           showCancelButton: true,
           confirmButtonColor: "#DD6B55",
@@ -121,7 +121,7 @@ angular.module('reg')
                   .admitUser(user._id)
                   .success(function(user){
                     $scope.users[index] = user;
-                    swal("Accepted", user.profile.name + ' has been admitted.', "success");
+                    swal("Accepted", user.profile.firstName + " " + user.profile.lastName + ' has been admitted.', "success");
                   });
 
               });
@@ -185,7 +185,7 @@ angular.module('reg')
             fields: [
               {
                 name: 'Name',
-                value: user.profile.name
+                value: user.profile.firstName + " " + user.profile.lastName
               },{
                 name: 'Gender',
                 value: user.profile.gender
