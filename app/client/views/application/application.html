@@ -96,22 +96,36 @@
             </select>
         </div>
 
+        <div class="field">
+            <select
+              name="degree"
+              ng-model="user.profile.degree">
+              <option value="">Degree Type</option>
+              <option value="Associates">Associate's</option>
+              <option value="Bachelors">Bachelor's</option>
+              <option value="Masters">Master's</option>
+              <option value="PhD">PhD</option>
+            </select>
+        </div>
+
+        <!-- Test checkbox stuff
         <div class="ui checkbox">
-          <input type="checkbox" id="associates" ng-model="user.profile.associates">
-          <label for="adult">Associate's</label>
+          <input type="checkbox" id="associates" ng-model="user.profile.associates" name="degree">
+          <label for="associates">Associate's</label>
         </div>
         <div class="ui checkbox" style="margin-left: 1em">
-          <input type="checkbox" id="bachelors" ng-model="user.profile.bachelors">
-          <label for="adult">Bachelor's</label>
+          <input type="checkbox" id="bachelors" ng-model="user.profile.bachelors" name="degree">
+          <label for="bachelors">Bachelor's</label>
         </div>
         <div class="ui checkbox" style="margin-left: 1em">
-          <input type="checkbox" id="masters" ng-model="user.profile.masters">
-          <label for="adult">Master's</label>
+          <input type="checkbox" id="masters" ng-model="user.profile.masters" name="degree">
+          <label for="masters">Master's</label>
         </div>
         <div class="ui checkbox" style="margin-left: 1em">
-          <input type="checkbox" id="phd" ng-model="user.profile.phd">
-          <label for="adult">PhD</label>
+          <input type="checkbox" id="phd" ng-model="user.profile.phd" name="degree">
+          <label for="phd">PhD</label>
         </div>
+        -->
 
         <div class="field">
           <label>Gender</label>

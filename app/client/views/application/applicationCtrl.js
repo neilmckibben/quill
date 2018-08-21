@@ -191,6 +191,15 @@ angular.module('reg')
                 }
               ]
             },
+            degree: {
+              identifier: 'degree',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please select your degree type.'
+                }
+              ]
+            },
             gender: {
               identifier: 'gender',
               rules: [
