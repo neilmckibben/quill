@@ -360,7 +360,7 @@ schema.statics.validateProfile = function(profile, cb){
     profile.firstName.length > 0 &&
     profile.lastName.length > 0 &&
     profile.adult &&
-    profile.degree.length > 0 &&
+    ['Associates', 'Bachelors', 'Masters', 'PhD'].indexOf(profile.degree) > -1 &&
     profile.school.length > 0 &&
 	profile.major.length > 0 &&
     ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].indexOf(profile.graduationMonth) > -1 &&
