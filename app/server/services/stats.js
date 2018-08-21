@@ -39,6 +39,12 @@ function calculateStats(){
         '2020': 0,
         '2021': 0,
         '2022': 0,
+      },
+      degree: {
+        'Associates': 0,
+        'Bachelors': 0,
+        'Masters': 0,
+        'PhD': 0,
       }
     },
 
@@ -157,6 +163,16 @@ function calculateStats(){
         // Count graduation years
         if (user.profile.graduationYear){
           newStats.demo.year[user.profile.graduationYear] += 1;
+        }
+
+        // Count graduation months
+        if (user.profile.graduationMonth){
+          newStats.demo.month[user.profile.graduationMonth] += 1;
+        }
+
+        // Count graduation degree type
+        if (user.profile.degree){
+          newStats.demo.degree[user.profile.degree] += 1;
         }
 
         // Grab the team name if there is one

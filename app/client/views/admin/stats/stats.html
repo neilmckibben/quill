@@ -229,6 +229,21 @@
         </div>
       </div>
     <div class="ui divider"></div>
+      <div class="ui list">
+        <div class="item">
+          <strong>Associates:</strong> {{stats.demo.degree['Associates']}} ({{stats.demo.degree['Assocaites'] / stats.total * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+          <strong>Bachelors:</strong> {{stats.demo.degree['Bachelors']}} ({{stats.demo.degree['Bachelors'] / stats.total * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+         <strong>Masters:</strong> {{stats.demo.degree['Masters']}} ({{stats.demo.degree['Masters'] / stats.total * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+          <strong>PhD:</strong> {{stats.demo.degree['PhD']}} ({{stats.demo.degree['PhD'] / stats.total * 100 | number: 1}}%)
+        </div>
+      </div>
+  <div class="ui divider"></div>
     <div class="ui list">
       <div
         class="item"
