@@ -199,6 +199,9 @@ angular.module('reg')
                 name: 'Graduation Month',
                 value: user.profile.graduationMonth
               },{
+                name: 'Degree Type',
+                value: user.profile.degree
+              },{
                 name: 'Graduation Year',
                 value: user.profile.graduationYear
               },{
