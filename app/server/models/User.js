@@ -25,6 +25,11 @@ var profile = {
     default: false,
   },
 
+  associates: {
+    type: Boolean,
+    default: false,
+  },
+
   bachelors: {
     type: Boolean,
     default: false,
@@ -368,7 +373,7 @@ schema.statics.validateProfile = function(profile, cb){
     profile.firstName.length > 0 &&
     profile.lastName.length > 0 &&
     profile.adult &&
-    (profile.bachelors || profile.masters || profile.phd) &&
+    (profile.associates || profile.bachelors || profile.masters || profile.phd) &&
     profile.school.length > 0 &&
 	profile.major.length > 0 &&
     ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].indexOf(profile.graduationMonth) > -1 &&
