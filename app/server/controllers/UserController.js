@@ -213,7 +213,8 @@ UserController.getPage = function(query, callback){
     var queries = [];
     var re = new RegExp(searchText, 'i');
     queries.push({ email: re });
-    queries.push({ 'profile.name': re });
+    queries.push({ 'profile.firstName': re });
+    queries.push({ 'profile.lastName': re });
     queries.push({ 'teamCode': re });
 
     findQuery.$or = queries;
@@ -222,7 +223,7 @@ UserController.getPage = function(query, callback){
   User
     .find(findQuery)
     .sort({
-      'profile.name': 'asc'
+      'profile.firstName': 'asc'
     })
     .select('+status.admittedBy')
     .skip(page * size)
@@ -429,7 +430,7 @@ UserController.getTeammates = function(id, callback){
       .find({
         teamCode: code
       })
-      .select('profile.name')
+      .select('profile.firstName' + ' ' + 'profile.lastName')
       .exec(callback);
   });
 };
@@ -457,7 +458,7 @@ UserController.createOrJoinTeam = function(id, code, callback){
   User.find({
     teamCode: code
   })
-  .select('profile.name')
+  .select('profile.firstName' + ' ' + 'profile.lastName')
   .exec(function(err, users){
     // Check to see if this team is joinable (< team max size)
     if (users.length >= maxTeamSize){

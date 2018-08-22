@@ -136,7 +136,7 @@ angular.module('reg')
         if (!user.admin){
           swal({
             title: "Whoa, wait a minute!",
-            text: "You are about make " + user.profile.name + " an admin!",
+            text: "You are about make " + user.profile.firstName + " " + user.profle.lastName + " an admin!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -148,7 +148,7 @@ angular.module('reg')
                 .makeAdmin(user._id)
                 .success(function(user){
                   $scope.users[index] = user;
-                  swal("Made", user.profile.name + ' an admin.', "success");
+                  swal("Made", user.profile.firstName + " " + user.profle.lastName + ' an admin.', "success");
                 });
             }
           );
@@ -157,7 +157,7 @@ angular.module('reg')
             .removeAdmin(user._id)
             .success(function(user){
               $scope.users[index] = user;
-              swal("Removed", user.profile.name + ' as admin', "success");
+              swal("Removed", user.profile.firstName + " " + user.profle.lastName + ' as admin', "success");
             });
         }
       };
