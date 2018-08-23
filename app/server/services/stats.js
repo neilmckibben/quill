@@ -212,6 +212,14 @@ function calculateStats(){
           });
         }
 
+        // Majors -- TEST
+        if (user.profile.major){
+            if (!newStats.demo.majors[user.profile.major]){
+              newStats.demo.majors[user.profile.major] = 0;
+            }
+            newStats.demo.majors[user.profile.major] += 1;
+        }
+
         // Count checked in
         newStats.checkedIn += user.status.checkedIn ? 1 : 0;
 
@@ -227,6 +235,17 @@ function calculateStats(){
             });
           });
         newStats.dietaryRestrictions = restrictions;
+
+        // Transform majors into a series of objects -- TEST
+        var majors = [];
+        _.keys(newStats.demo.majors)
+          .forEach(function(key){
+            majors.push({
+              name: key,
+              count: newStats.demo.majors[key],
+            });
+          });
+        newStats.demo.majors = majors;
 
         // Transform schools into an array of objects
         var schools = [];
