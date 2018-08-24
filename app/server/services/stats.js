@@ -212,7 +212,7 @@ function calculateStats(){
           });
         }
 
-        // Majors -- TEST
+        // Majors
         if (user.profile.major){
             if (!newStats.demo.majors[user.profile.major]){
               newStats.demo.majors[user.profile.major] = 0;
@@ -236,7 +236,7 @@ function calculateStats(){
           });
         newStats.dietaryRestrictions = restrictions;
 
-        // Transform majors into a series of objects -- TEST
+        // Transform majors into a series of objects
         var majors = [];
         _.keys(newStats.demo.majors)
           .forEach(function(key){
