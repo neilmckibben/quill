@@ -96,7 +96,7 @@ controller.sendVerificationEmail = function(email, token, callback) {
   };
 
   /**
-   * Eamil-verify takes a few template values:
+   * Email-verify takes a few template values:
    * {
    *   verifyUrl: the url that the user must visit to verify their account
    * }
@@ -138,7 +138,7 @@ controller.sendPasswordResetEmail = function(email, token, callback) {
   };
 
   /**
-   * Eamil-verify takes a few template values:
+   * Email-verify takes a few template values:
    * {
    *   verifyUrl: the url that the user must visit to verify their account
    * }
@@ -175,7 +175,7 @@ controller.sendPasswordChangedEmail = function(email, callback){
   };
 
   /**
-   * Eamil-verify takes a few template values:
+   * Email-verify takes a few template values:
    * {
    *   verifyUrl: the url that the user must visit to verify their account
    * }
