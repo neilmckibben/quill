@@ -93,36 +93,13 @@ var confirmation = {
   wantsHardware: Boolean,
   hardware: String,
 
-  major: String,
   github: String,
-  twitter: String,
-  website: String,
   resume: String,
-
-  needsReimbursement: Boolean,
-  address: {
-    firstName: String,
-    lastName: String,
-    line1: String,
-    line2: String,
-    city: String,
-    state: String,
-    zip: String,
-    country: String
-  },
-  receipt: String,
-
-  hostNeededFri: Boolean,
-  hostNeededSat: Boolean,
-  genderNeutral: Boolean,
-  catFriendly: Boolean,
-  smokingFriendly: Boolean,
-  hostNotes: String,
 
   notes: String,
 
   signatureLiability: String,
-  signaturePhotoRelease: String,
+  /*signaturePhotoRelease: String,*/
   signatureCodeOfConduct: String,
 };
 

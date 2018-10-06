@@ -18,7 +18,7 @@ angular.module('reg')
 
       _setupForm();
 
-      $scope.fileName = user._id + "_" + user.profile.name.split(" ").join("_");
+      $scope.fileName = user._id + "_" + user.profile.firstName + "_" + user.profile.lastName;
 
       // -------------------------------
       // All this just for dietary restriction checkboxes fml
@@ -74,6 +74,7 @@ angular.module('reg')
       function _setupForm(){
         // Semantic-UI form validation
         $('.ui.form').form({
+          inline: true,
           fields: {
             shirt: {
               identifier: 'shirt',
@@ -102,7 +103,7 @@ angular.module('reg')
                 }
               ]
             },
-            signaturePhotoRelease: {
+            /*signaturePhotoRelease: {
               identifier: 'signaturePhotoRelease',
               rules: [
                 {
@@ -110,7 +111,7 @@ angular.module('reg')
                   prompt: 'Please type your digital signature.'
                 }
               ]
-            },
+            },*/
             signatureCodeOfConduct: {
               identifier: 'signatureCodeOfConduct',
               rules: [
@@ -127,6 +128,9 @@ angular.module('reg')
       $scope.submitForm = function(){
         if ($('.ui.form').form('is valid')){
           _updateUser();
+        }
+        else{
+          sweetAlert("Uh oh!", "Please Fill The Required Fields", "error");
         }
       };
 
