@@ -218,7 +218,7 @@ angular.module('reg')
             fields: [
               {
                 name: 'Name',
-                value: user.profile.firstName + " " + user.profile.lastName
+                value: user.profile.firstName + " " + user.profile.lastName 
               },{
                 name: 'Gender',
                 value: user.profile.gender
@@ -263,19 +263,22 @@ angular.module('reg')
               },{
                 name: 'Github',
                 value: user.confirmation.github
-              },{
+              },/*{
                 name: 'Website',
                 value: user.confirmation.website
-              },{
+              },*/{
                 name: 'Needs Hardware',
                 value: user.confirmation.wantsHardware,
                 type: 'boolean'
               },{
                 name: 'Hardware Requested',
                 value: user.confirmation.hardware
+              },{
+                name: 'Additional Notes',
+                value: user.confirmation.notes
               }
             ]
-          },{
+          }/*,{
             name: 'Hosting',
             fields: [
               {
@@ -325,12 +328,9 @@ angular.module('reg')
                   ',',
                   user.confirmation.address.country,
                 ].join(' ') : ''
-              },{
-                name: 'Additional Notes',
-                value: user.confirmation.notes
               }
             ]
-          }
+          }*/
         ];
       }
 

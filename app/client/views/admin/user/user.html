@@ -1,7 +1,7 @@
 <div class="ui top attached segment">
 
   <div class="ui header">
-    {{selectedUser.profile.name ? selectedUser.profile.name : selectedUser.email}}
+    {{(selectedUser.profile.firstName + ' ' + selectedUser.profile.lastName) ? (selectedUser.profile.firstName+ ' ' + selectedUser.profile.lastName) : selectedUser.email}}
     <span
       ng-show="selectedUser.admin">
       (Admin)
@@ -86,14 +86,14 @@
         <label> First Name </label>
         <input type="text"
                name="firstName"
-               ng-model="user.profile.firstName">
+               ng-model="selectedUser.profile.firstName">
       </div>
 
       <div class="field">
         <label> Last Name </label>
         <input type="text"
                name="lastName"
-               ng-model="user.profile.lastName">
+               ng-model="selectedUser.profile.lastName">
       </div>
 
       <div class="field" ng-show="autoFilledSchool">
@@ -122,7 +122,7 @@
         <label>Anticipated Graduation Date</label>
         <select
           name="month"
-          ng-model="user.profile.graduationMonth">
+          ng-model="user.selectedUser.graduationMonth">
           <option value="">Anticipated Graduation Month</option>
           <option value="January">January</option>
           <option value="February">February</option>
@@ -142,7 +142,7 @@
       <div class="field">
           <select
             name="year"
-            ng-model="user.profile.graduationYear">
+            ng-model="selectedUser.profile.graduationYear">
             <option value="">Anticipated Graduation Year</option>
             <option value="2018">2018</option>
             <option value="2019">2019</option>
@@ -155,7 +155,7 @@
       <div class="field">
           <select
             name="degree"
-            ng-model="user.profile.degree">
+            ng-model="selectedUser.profile.degree">
             <option value="">Degree Type</option>
             <option value="Associates">Associate's</option>
             <option value="Bachelors">Bachelor's</option>
@@ -163,25 +163,6 @@
             <option value="PhD">PhD</option>
           </select>
       </div>
-
-      <!-- Test checkbox stuff
-      <div class="ui checkbox">
-        <input type="checkbox" id="associates" ng-model="user.profile.associates" name="degree">
-        <label for="associates">Associate's</label>
-      </div>
-      <div class="ui checkbox" style="margin-left: 1em">
-        <input type="checkbox" id="bachelors" ng-model="user.profile.bachelors" name="degree">
-        <label for="bachelors">Bachelor's</label>
-      </div>
-      <div class="ui checkbox" style="margin-left: 1em">
-        <input type="checkbox" id="masters" ng-model="user.profile.masters" name="degree">
-        <label for="masters">Master's</label>
-      </div>
-      <div class="ui checkbox" style="margin-left: 1em">
-        <input type="checkbox" id="phd" ng-model="user.profile.phd" name="degree">
-        <label for="phd">PhD</label>
-      </div>
-      -->
 
       <div class="field">
         <label>Gender</label>
@@ -276,10 +257,10 @@
         <input type="url" ng-model="selectedUser.profile.github" />
       </div>
 
-      <div class="field">
+      <!--<div class="field">
         <label> Website </label>
         <input type="url" ng-model="selectedUser.profile.website" />
-      </div>
+      </div>-->
 
       <div class="field">
         <label> Resume </label>
@@ -305,7 +286,7 @@
         <input type="text" ng-model="selectedUser.confirmation.hardware">
       </div>
 
-      <div class="ui divider"></div>
+      <!--<div class="ui divider"></div>
 
       <div class="ui header">
         Hosting
@@ -451,7 +432,7 @@
       <div class="field">
         <label> Receipt </label>
         <input type="url" ng-model="selectedUser.confirmation.receipt" />
-      </div>
+      </div>-->
 
       <div class="field">
         <label> Additional Notes </label>
