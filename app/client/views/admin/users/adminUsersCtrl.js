@@ -218,7 +218,7 @@ angular.module('reg')
             fields: [
               {
                 name: 'Name',
-                value: user.profile.firstName + " " + user.profile.lastName 
+                value: user.profile.firstName + " " + user.profile.lastName
               },{
                 name: 'Gender',
                 value: user.profile.gender
@@ -257,10 +257,10 @@ angular.module('reg')
               },{
                 name: 'Shirt Size',
                 value: user.confirmation.shirtSize
-              },{
+              },/*{
                 name: 'Major',
                 value: user.confirmation.major
-              },{
+              },*/{
                 name: 'Github',
                 value: user.confirmation.github
               },/*{
