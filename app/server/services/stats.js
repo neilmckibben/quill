@@ -126,7 +126,7 @@ function calculateStats(){
         newStats.confirmed += user.status.confirmed ? 1 : 0;
 
         // Count confirmed that are osu
-        newStats.confirmedOsu += user.status.confirmed && email === "osu.edu" ? 1 : 0;
+        newStats.confirmedOsu += user.status.confirmed && ((email === "osu.edu") || (email === "buckeyemail.osu.edu")) ? 1 : 0;
 
         newStats.confirmedFemale += user.status.confirmed && user.profile.gender == "F" ? 1 : 0;
         newStats.confirmedMale += user.status.confirmed && user.profile.gender == "M" ? 1 : 0;
