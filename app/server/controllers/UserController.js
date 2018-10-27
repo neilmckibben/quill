@@ -207,19 +207,31 @@ UserController.getPage = function(query, callback){
   var page = query.page;
   var size = parseInt(query.size);
   var searchText = query.text;
+  // var fullName = profile.firstName + profile.lastName;
+  // console.log(fullName);
 
   var findQuery = {};
   if (searchText.length > 0){
+    console.log(searchText)
     var queries = [];
-    var re = new RegExp(searchText, 'i');
-    queries.push({ email: re });
-    queries.push({ 'profile.firstName': re });
-    queries.push({ 'profile.lastName': re });
-    queries.push({ 'teamCode': re });
+
+    var fullNameArr = searchText.split(' ');
+    if (fullNameArr.length == 2) {
+      queries.push({ 'profile.firstName': new RegExp(fullNameArr[0], 'i')});
+      queries.push({ 'profile.lastName': new RegExp(fullNameArr[1], 'i')});
+    }
+
+    else {
+      var re = new RegExp(searchText, 'i');
+      queries.push({ email: re });
+      queries.push({ 'profile.firstName': re });
+      queries.push({ 'profile.lastName': re });
+      queries.push({ 'teamCode': re });
+    }
 
     findQuery.$or = queries;
   }
-
+  console.log(User.find(findQuery));
   User
     .find(findQuery)
     .sort({
