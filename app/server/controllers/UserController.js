@@ -256,7 +256,7 @@ UserController.getPage = function(query, callback){
  * @param  {Function} callback args(err, user)
  */
 UserController.getById = function (id, callback){
-  User.findById(id, callback);
+  User.findById(id).exec(callback);
 };
 
 /**
@@ -325,7 +325,7 @@ UserController.updateProfileById = function (id, profile, callback){
  */
 UserController.updateConfirmationById = function (id, confirmation, callback){
 
-  User.findById(id, function(err, user){
+  User.findById(id).exec(function(err, user){
 
     if(err || !user){
       return callback(err);
@@ -413,7 +413,7 @@ UserController.verifyByToken = function(token, callback){
  * @param  {Function} callback args(err, users)
  */
 UserController.getTeammates = function(id, callback){
-  User.findById(id, function(err, user){
+  User.findById(id).exec(function(err, user){
     if (err || !user){
       return callback(err, user);
     }

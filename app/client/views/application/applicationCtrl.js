@@ -1,3 +1,6 @@
+const angular = require("angular");
+const swal = require("sweetalert");
+
 angular.module('reg')
   .controller('ApplicationCtrl', [
     '$scope',
@@ -8,7 +11,7 @@ angular.module('reg')
     'settings',
     'Session',
     'UserService',
-    function($scope, $rootScope, $state, $http, currentUser, Settings, Session, UserService){
+    function($scope, $rootScope, $state, $http, currentUser, settings, Session, UserService) {
 
       // Set up the user
       $scope.user = currentUser.data;
@@ -26,7 +29,7 @@ angular.module('reg')
 	  populateMajors();
       _setupForm();
 
-      $scope.regIsClosed = Date.now() > Settings.data.timeClose;
+      $scope.regIsClosed = Date.now() > settings.data.timeClose;
 
       /**
        * TODO: JANK WARNING
@@ -96,18 +99,12 @@ angular.module('reg')
       function _updateUser(e){
         UserService
           .updateProfile(Session.getUserId(), $scope.user.profile)
-          .success(function(data){
-            sweetAlert({
-              title: "Awesome!",
-              text: "Your application has been saved.",
-              type: "success",
-              confirmButtonColor: "#e76482"
-            }, function(){
-              $state.go('app.dashboard');
+          .then(response => {
+            swal("Awesome!", "Your application has been saved.", "success").then(value => {
+              $state.go("app.dashboard");
             });
-          })
-          .error(function(res){
-            sweetAlert("Uh oh!", "Something went wrong.", "error");
+          }, response => {
+            swal("Uh oh!", "Something went wrong.", "error");
           });
       }
 
@@ -116,7 +113,7 @@ angular.module('reg')
       }
 
       function minorsAreAllowed() {
-        return Settings.data.allowMinors;
+        return settings.data.allowMinors;
       }
 
       function minorsValidation() {
@@ -222,15 +219,11 @@ angular.module('reg')
         });
       }
 
-
-
       $scope.submitForm = function(){
         if ($('.ui.form').form('is valid')){
           _updateUser();
-        }
-        else{
-          sweetAlert("Uh oh!", "Please Fill The Required Fields", "error");
+        } else {
+          swal("Uh oh!", "Please Fill The Required Fields", "error");
         }
       };
-
     }]);
