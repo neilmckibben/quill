@@ -1,5 +1,3 @@
-const swal = require('sweetalert');
-
 angular.module('reg')
   .controller('AdminUserCtrl',[
     '$scope',
@@ -35,11 +33,13 @@ angular.module('reg')
       $scope.updateProfile = function(){
         UserService
           .updateProfile($scope.selectedUser._id, $scope.selectedUser.profile)
-          .then(response => {
-            $selectedUser = response.data;
+          .success(function(data){
+            $selectedUser = data;
             swal("Updated!", "Profile updated.", "success");
-          }, response => {
+          })
+          .error(function(){
             swal("Oops, you forgot something.");
           });
       };
+
     }]);

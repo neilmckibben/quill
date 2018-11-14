@@ -1,6 +1,3 @@
-const moment = require('moment');
-const swal = require('sweetalert');
-
 angular.module('reg')
   .controller('AdminUsersCtrl',[
     '$scope',
@@ -37,15 +34,15 @@ angular.module('reg')
 
       UserService
         .getPage($stateParams.page, $stateParams.size, $stateParams.query)
-        .then(response => {
-          updatePage(response.data);
+        .success(function(data){
+          updatePage(data);
         });
 
       $scope.$watch('queryText', function(queryText){
         UserService
           .getPage($stateParams.page, $stateParams.size, queryText)
-          .then(response => {
-            updatePage(response.data);
+          .success(function(data){
+            updatePage(data);
           });
       });
 
@@ -70,41 +67,28 @@ angular.module('reg')
         if (!user.status.checkedIn){
           swal({
             title: "Whoa, wait a minute!",
-            text: "You are about to check in " + user.profile.firstName + " " + user.profle.lastName + "!",
-            icon: "warning",
-            buttons: {
-              cancel: {
-                text: "Cancel",
-                value: null,
-                visible: true
-              },
-              checkIn: {
-                className: "danger-button",
-                closeModal: false,
-                text: "Yes, check them in",
-                value: true,
-                visible: true
-              }
+            text: "You are about to check in " + user.profile.firstName + " " + user.profile.lastName + "!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, check them in.",
+            closeOnConfirm: false
+            },
+            function(){
+              UserService
+                .checkIn(user._id)
+                .success(function(user){
+                  $scope.users[index] = user;
+                  swal("Accepted", user.profile.firstName + " " + user.profile.lastName + ' has been checked in.', "success");
+                });
             }
-          })
-          .then(value => {
-            if (!value) {
-              return;
-            }
-
-            UserService
-              .checkIn(user._id)
-              .then(response => {
-                $scope.users[index] = response.data;
-                swal("Accepted", response.data.profile.firstName + " " + response.data.profile.lastName + " has been checked in.", "success");
-              });
-          });
+          );
         } else {
           UserService
             .checkOut(user._id)
             .success(function(user){
-              $scope.users[index] = response.data;
-              swal("Accepted", response.data.profile.firstName + " " + response.data.profile.lastName + ' has been checked out.', "success");
+              $scope.users[index] = user;
+              swal("Accepted", user.profile.firstName + " " + user.profile.lastName + ' has been checked out.', "success");
             });
         }
       };
@@ -112,65 +96,38 @@ angular.module('reg')
       $scope.acceptUser = function($event, user, index) {
         $event.stopPropagation();
 
-        console.log(user);
-
         swal({
-          buttons: {
-            cancel: {
-              text: "Cancel",
-              value: null,
-              visible: true
-            },
-            accept: {
-              className: "danger-button",
-              closeModal: false,
-              text: "Yes, accept them",
-              value: true,
-              visible: true
-            }
-          },
-          dangerMode: true,
-          icon: "warning",
-          text: "You are about to accept " + user.profile.firstName + " " + user.profle.lastName + "!",
-          title: "Whoa, wait a minute!"
-        }).then(value => {
-          if (!value) {
-            return;
-          }
+          title: "Whoa, wait a minute!",
+          text: "You are about to accept " + user.profile.firstName + " " + user.profile.lastName + "!",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, accept them.",
+          closeOnConfirm: false
+          }, function(){
 
-          swal({
-            buttons: {
-              cancel: {
-                text: "Cancel",
-                value: null,
-                visible: true
-              },
-              yes: {
-                className: "danger-button",
-                closeModal: false,
-                text: "Yes, accept this user",
-                value: true,
-                visible: true
-              }
-            },
-            dangerMode: true,
-            title: "Are you sure?",
-            text: "Your account will be logged as having accepted this user. " +
-              "Remember, this power is a privilege.",
-            icon: "warning"
-          }).then(value => {
-            if (!value) {
-              return;
-            }
+            swal({
+              title: "Are you sure?",
+              text: "Your account will be logged as having accepted this user. " +
+                "Remember, this power is a privilege.",
+              type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+              confirmButtonText: "Yes, accept this user.",
+              closeOnConfirm: false
+              }, function(){
 
-            UserService
-              .admitUser(user._id)
-              .then(response => {
-                $scope.users[index] = response.data;
-                swal("Accepted", response.data.profile.firstName + " " + response.data.profile.lastName + ' has been admitted.', "success");
+                UserService
+                  .admitUser(user._id)
+                  .success(function(user){
+                    $scope.users[index] = user;
+                    swal("Accepted", user.profile.firstName + " " + user.profile.lastName + ' has been admitted.', "success");
+                  });
+
               });
+
           });
-        });
+
       };
 
       $scope.toggleAdmin = function($event, user, index) {
@@ -180,43 +137,31 @@ angular.module('reg')
           swal({
             title: "Whoa, wait a minute!",
             text: "You are about make " + user.profile.firstName + " " + user.profle.lastName + " an admin!",
-            icon: "warning",
-            buttons: {
-              cancel: {
-                text: "Cancel",
-                value: null,
-                visible: true
-              },
-              confirm: {
-                text: "Yes, make them an admin",
-                className: "danger-button",
-                closeModal: false,
-                value: true,
-                visible: true
-              }
-            }
-          }).then(value => {
-            if (!value) {
-              return;
-            }
-
-            UserService
-              .makeAdmin(user._id)
-              .then(response => {
-                $scope.users[index] = response.data;
-                swal("Made", response.data.profile.name + ' an admin.', "success");
-              });
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, make them an admin.",
+            closeOnConfirm: false
+            },
+            function(){
+              UserService
+                .makeAdmin(user._id)
+                .success(function(user){
+                  $scope.users[index] = user;
+                  swal("Made", user.profile.firstName + " " + user.profle.lastName + ' an admin.', "success");
+                });
             }
           );
         } else {
           UserService
             .removeAdmin(user._id)
-            .then(response => {
-              $scope.users[index] = response.data;
-              swal("Removed", response.data.profile.name + ' as admin', "success");
+            .success(function(user){
+              $scope.users[index] = user;
+              swal("Removed", user.profile.firstName + " " + user.profle.lastName + ' as admin', "success");
             });
         }
       };
+
 
       function formatTime(time){
         if (time) {

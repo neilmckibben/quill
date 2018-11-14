@@ -1,7 +1,3 @@
-const angular = require('angular');
-const showdown = require('showdown');
-const swal = require('sweetalert');
-
 angular.module('reg')
   .controller('DashboardCtrl', [
     '$rootScope',
@@ -74,8 +70,8 @@ angular.module('reg')
       $scope.resendEmail = function(){
         AuthService
           .resendVerificationEmail()
-          .then(response => {
-            swal("Your email has been sent.");
+          .then(function(){
+            sweetAlert('Your email has been sent.');
           });
       };
 
@@ -90,34 +86,23 @@ angular.module('reg')
 
       $scope.declineAdmission = function(){
 
-      swal({
-        title: "Whoa!",
-        text: "Are you sure you would like to decline your admission? \n\n You can't go back!",
-        icon: "warning",
-        buttons: {
-          cancel: {
-            text: "Cancel",
-            value: null,
-            visible: true
-          },
-          confirm: {
-            text: "Yes, I can't make it",
-            value: true,
-            visible: true,
-            className: "danger-button"
-          }
-        }
-      }).then(value => {
-        if (!value) {
-          return;
-        }
+        swal({
+          title: "Whoa!",
+          text: "Are you sure you would like to decline your admission? \n\n You can't go back!",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, I can't make it.",
+          closeOnConfirm: true
+          }, function(){
 
-        UserService
-          .declineAdmission(user._id)
-          .then(response => {
-            $rootScope.currentUser = response.data;
-            $scope.user = response.data;
-          });
-      });
-    };
-  }]);
+            UserService
+              .declineAdmission(user._id)
+              .success(function(user){
+                $rootScope.currentUser = user;
+                $scope.user = user;
+              });
+        });
+      };
+
+    }]);

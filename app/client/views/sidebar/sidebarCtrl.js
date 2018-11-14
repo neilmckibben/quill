@@ -1,8 +1,4 @@
-const angular = require('angular');
-const Utils = require('../../src/modules/Utils.js');
-
 angular.module('reg')
-  .service('settings', function() {})
   .controller('SidebarCtrl', [
     '$rootScope',
     '$scope',
@@ -11,9 +7,9 @@ angular.module('reg')
     'AuthService',
     'Session',
     'EVENT_INFO',
-    function($rootScope, $scope, settings, Utils, AuthService, Session, EVENT_INFO){
+    function($rootScope, $scope, Settings, Utils, AuthService, Session, EVENT_INFO){
 
-      var settings = settings.data;
+      var settings = Settings.data;
       var user = $rootScope.currentUser;
 
       $scope.EVENT_INFO = EVENT_INFO;

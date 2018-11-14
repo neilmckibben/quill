@@ -1,20 +1,6 @@
-const $ = require('jquery');
-const semantic = require('../semantic/semantic.min.js');
-
-var angular = require('angular');
-var uiRouter = require('angular-ui-router');
-
 var app = angular.module('reg', [
   'ui.router',
 ]);
-
-const constants = require('./constants.js');
-
-var AuthService = require('./services/AuthService.js');
-var AuthInterceptor = require('./interceptors/AuthInterceptor.js');
-var Session = require('./modules/Session.js');
-
-var routes = require('./routes.js');
 
 app
   .config([
@@ -37,3 +23,4 @@ app
       }
 
   }]);
+

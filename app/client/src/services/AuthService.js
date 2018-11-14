@@ -1,5 +1,3 @@
-var angular = require('angular');
-
 angular.module('reg')
   .factory('AuthService', [
     '$http',
@@ -32,10 +30,11 @@ angular.module('reg')
             email: email,
             password: password
           })
-          .then(response => {
-            loginSuccess(response.data, onSuccess);
-          }, response => {
-            loginFailure(response.data, onFailure);
+          .success(function(data){
+            loginSuccess(data, onSuccess);
+          })
+          .error(function(data){
+            loginFailure(data, onFailure);
           });
       };
 
@@ -44,10 +43,11 @@ angular.module('reg')
           .post('/auth/login', {
             token: token
           })
-          .then(response => {
-            loginSuccess(response.data, onSuccess);
-          }, response => {
-            if (response.status === 400) {
+          .success(function(data){
+            loginSuccess(data, onSuccess);
+          })
+          .error(function(data, statusCode){
+            if (statusCode === 400){
               Session.destroy(loginFailure);
             }
           });
@@ -65,24 +65,26 @@ angular.module('reg')
             email: email,
             password: password
           })
-          .then(response => {
-            loginSuccess(response.data, onSuccess);
-          }, response => {
-            loginFailure(response.data, onFailure);
+          .success(function(data){
+            loginSuccess(data, onSuccess);
+          })
+          .error(function(data){
+            loginFailure(data, onFailure);
           });
       };
 
       authService.verify = function(token, onSuccess, onFailure) {
         return $http
           .get('/auth/verify/' + token)
-          .then(response => {
-            Session.setUser(response.data);
-            if (onSuccess) {
-              onSuccess(response.data);
+          .success(function(user){
+            Session.setUser(user);
+            if (onSuccess){
+              onSuccess(user);
             }
-          }, response => {
+          })
+          .error(function(data){
             if (onFailure) {
-              onFailure(response.data);
+              onFailure(data);
             }
           });
       };
@@ -107,7 +109,8 @@ angular.module('reg')
             token: token,
             password: pass
           })
-          .then(onSuccess, onFailure);
+          .success(onSuccess)
+          .error(onFailure);
       };
 
       return authService;

@@ -47,6 +47,7 @@
     left: 0;
     right: 0;
     bottom: 16px;
+
   }
 
   // Tab is the sibling of the sidebar
@@ -101,5 +102,9 @@
       @include transform(translate3d(0,0,0));
       padding: 12px;
     }
+    .note {
+      display: none;
+    }
+
   }
 }

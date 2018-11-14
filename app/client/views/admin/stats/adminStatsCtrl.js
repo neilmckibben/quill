@@ -1,5 +1,3 @@
-const moment = require('moment');
-
 angular.module('reg')
   .controller('AdminStatsCtrl',[
     '$scope',
@@ -8,8 +6,8 @@ angular.module('reg')
 
       UserService
         .getStats()
-        .then(stats => {
-          $scope.stats = stats.data;
+        .success(function(stats){
+          $scope.stats = stats;
           $scope.loading = false;
         });
 

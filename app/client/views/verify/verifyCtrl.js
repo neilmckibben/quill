@@ -8,14 +8,17 @@ angular.module('reg')
 
       $scope.loading = true;
 
-      if (token) {
+      if (token){
         AuthService.verify(token,
           function(user){
             $scope.success = true;
+
             $scope.loading = false;
           },
           function(err){
+
             $scope.loading = false;
           });
       }
+
     }]);

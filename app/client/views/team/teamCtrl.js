@@ -19,10 +19,10 @@ angular.module('reg')
       function _populateTeammates() {
         UserService
           .getMyTeammates()
-          .then(response => {
+          .success(function(users){
             $scope.error = null;
-            $scope.teammates = response.data;
-          })
+            $scope.teammates = users;
+          });
       }
 
       if ($scope.user.teamCode){
@@ -32,24 +32,26 @@ angular.module('reg')
       $scope.joinTeam = function(){
         UserService
           .joinOrCreateTeam($scope.code)
-          .then(response => {
+          .success(function(user){
             $scope.error = null;
-            $scope.user = response.data;
+            $scope.user = user;
             _populateTeammates();
-          }, response => {
-            $scope.error = response.data.message;
+          })
+          .error(function(res){
+            $scope.error = res.message;
           });
       };
 
       $scope.leaveTeam = function(){
         UserService
           .leaveTeam()
-          .then(response => {
+          .success(function(user){
             $scope.error = null;
-            $scope.user = response.data;
+            $scope.user = user;
             $scope.teammates = [];
-          }, response => {
-            $scope.error = response.data.message;
+          })
+          .error(function(res){
+            $scope.error = res.data.message;
           });
       };
 

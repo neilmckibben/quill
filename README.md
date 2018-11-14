@@ -64,40 +64,41 @@ On the Settings tab, admins can easily control their event application timeline 
 ### Requirements
 | Requirement                                 | Version |
 | ------------------------------------------- | ------- |
-| [Node.js](http://nodejs.org)                | `10.13+`  |
-| [MongoDB](www.mongodb.com/) | `4.0+`  |
+| [GCC 4.6](https://gcc.gnu.org) | `4.6+` |
+| [Node.js](http://nodejs.org)                | `8.0+`  |
+| [MongoDB](www.mongodb.com/) | `3.0+`  |
+
+> _Updating to the latest releases is recommended_.
 
 Run the following commands to check the current installed versions:
 
-```bash
+```shell
+gcc --version
 node -v
 mongo --version
 ```
 How to upgrade to latest releases:
+- GCC: https://wiki.gentoo.org/wiki/Upgrading_GCC
 - Node.js: https://nodejs.org/en/download/
 - MongoDB: https://docs.mongodb.com/manual/administration/install-community/
 
 ### Deploying locally
 Getting a local instance of Quill up and running takes less than 5 minutes! Start by setting up the database. Ideally, you should run MongoDB as a daemon with a secure configuration (with most linux distributions, you should be able to install it with your package manager, and it'll be set up as a daemon). Although not recommended for production, when running locally for development, you could do it like this
 
-```bash
+```
 mkdir db
-mongod --dbpath db --bind_ip 127.0.0.1
+mongod --dbpath db --bind_ip 127.0.0.1 --nohttpinterface
 ```
 
 Install the necessary dependencies:
-```bash
+```
 npm install
+bower install
+npm run config
 ```
-
-We use `dotenv` to keep track of environment variables, so be sure to stop tracking the `.env` file in Git:
-```bash
-git update-index --assume-unchanged .env
-```
-
 
 Edit the configuration file in `.env` for your setup, and then run the application:
-```bash
+```
 gulp server
 ```
 
