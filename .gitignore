@@ -5,6 +5,7 @@ semantic/
 
 # Output
 app/client/build/
+app/client/plugins/
 
 # macOS
 .DS_Store
