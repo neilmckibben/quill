@@ -325,6 +325,9 @@ angular.module('reg')
               },{
                 name: 'Hardware Requested',
                 value: user.confirmation.hardware
+              },{
+                name: 'Additional Notes',
+                value: user.confirmation.notes
               }
             ]
           }/*,{
@@ -377,9 +380,6 @@ angular.module('reg')
                   ',',
                   user.confirmation.address.country,
                 ].join(' ') : ''
-              },{
-                name: 'Additional Notes',
-                value: user.confirmation.notes
               }
             ]
           }*/
