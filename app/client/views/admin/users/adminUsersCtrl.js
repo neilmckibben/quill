@@ -313,9 +313,6 @@ angular.module('reg')
                 name: 'Shirt Size',
                 value: user.confirmation.shirtSize
               },{
-                name: 'Major',
-                value: user.confirmation.major
-              },{
                 name: 'Github',
                 value: user.confirmation.github
               },{
@@ -330,7 +327,7 @@ angular.module('reg')
                 value: user.confirmation.hardware
               }
             ]
-          },{
+          }/*,{
             name: 'Hosting',
             fields: [
               {
@@ -385,7 +382,7 @@ angular.module('reg')
                 value: user.confirmation.notes
               }
             ]
-          }
+          }*/
         ];
       }
 

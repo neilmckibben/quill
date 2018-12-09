@@ -99,7 +99,7 @@ angular.module('reg')
                 }
               ]
             },
-            signaturePhotoRelease: {
+            /*signaturePhotoRelease: {
               identifier: 'signaturePhotoRelease',
               rules: [
                 {
@@ -107,7 +107,7 @@ angular.module('reg')
                   prompt: 'Please type your digital signature.'
                 }
               ]
-            },
+            },*/
             signatureCodeOfConduct: {
               identifier: 'signatureCodeOfConduct',
               rules: [
@@ -124,6 +124,9 @@ angular.module('reg')
       $scope.submitForm = function(){
         if ($('.ui.form').form('is valid')){
           _updateUser();
+        }
+        else{
+          sweetAlert("Uh oh!", "Please Fill The Required Fields", "error");
         }
       };
 
