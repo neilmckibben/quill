@@ -281,8 +281,17 @@ angular.module('reg')
                 name: 'School',
                 value: user.profile.school
               },{
+                name: 'Major',
+                value: user.profile.major
+              },{
+                name: 'Graduation Month',
+                value: user.profile.graduationMonth
+              },{
                 name: 'Graduation Year',
                 value: user.profile.graduationYear
+              },{
+                name: 'Degree Type',
+                value: user.profile.degree
               },{
                 name: 'Description',
                 value: user.profile.description

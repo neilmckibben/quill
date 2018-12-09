@@ -18,12 +18,33 @@ function calculateStats(){
         N: 0
       },
       schools: {},
+      majors: {},
+      month: {
+        'January': 0,
+        'February': 0,
+        'March': 0,
+        'April': 0,
+        'May': 0,
+        'June': 0,
+        'July': 0,
+        'August': 0,
+        'September': 0,
+        'October': 0,
+        'November': 0,
+        'December': 0,
+      },
       year: {
         '2018': 0,
         '2019': 0,
         '2020': 0,
         '2021': 0,
         '2022': 0,
+      },
+      degree: {
+        'Associates': 0,
+        'Bachelors': 0,
+        'Masters': 0,
+        'Doctorate': 0,
       }
     },
 
@@ -139,9 +160,19 @@ function calculateStats(){
         newStats.demo.schools[email].confirmed += user.status.confirmed ? 1 : 0;
         newStats.demo.schools[email].declined += user.status.declined ? 1 : 0;
 
+        // Count graduation months
+        if (user.profile.graduationMonth){
+          newStats.demo.month[user.profile.graduationMonth] += 1;
+        }
+
         // Count graduation years
         if (user.profile.graduationYear){
           newStats.demo.year[user.profile.graduationYear] += 1;
+        }
+
+        // Count degrees
+        if (user.profile.degree){
+          newStats.demo.degree[user.profile.degree] += 1;
         }
 
         // Grab the team name if there is one
@@ -181,6 +212,14 @@ function calculateStats(){
           });
         }
 
+        // Majors
+        if (user.profile.major){
+          if (!newStats.demo.majors[user.profile.major]){
+            newStats.demo.majors[user.profile.major] = 0;
+          }
+          newStats.demo.majors[user.profile.major] += 1;
+        }
+
         // Count checked in
         newStats.checkedIn += user.status.checkedIn ? 1 : 0;
 
@@ -196,6 +235,17 @@ function calculateStats(){
             });
           });
         newStats.dietaryRestrictions = restrictions;
+
+        // Transform majors into a series of objects
+        var majors = [];
+        _.keys(newStats.demo.majors)
+          .forEach(function(key){
+            majors.push({
+              name: key,
+              count: newStats.demo.majors[key],
+            });
+          });
+        newStats.demo.majors = majors;
 
         // Transform schools into an array of objects
         var schools = [];

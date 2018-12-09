@@ -229,6 +229,21 @@
         </div>
       </div>
     <div class="ui divider"></div>
+      <div class="ui list">
+        <div class="item">
+          <strong>Associate's:</strong> {{stats.demo.degree['Associates']}} ({{stats.demo.degree['Associates'] / stats.submitted * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+          <strong>Bachelor's:</strong> {{stats.demo.degree['Bachelors']}} ({{stats.demo.degree['Bachelors'] / stats.submitted * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+         <strong>Master's:</strong> {{stats.demo.degree['Masters']}} ({{stats.demo.degree['Masters'] / stats.submitted * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+          <strong>Doctorate:</strong> {{stats.demo.degree['Doctorate']}} ({{stats.demo.degree['Doctorate'] / stats.submitted * 100 | number: 1}}%)
+        </div>
+      </div>
+    <div class="ui divider"></div>
     <div class="ui list">
       <div
         class="item"
@@ -253,6 +268,16 @@
         </div>
       </div>
     </div>
+    <div class="ui list">
+      <div
+        class="item"
+        ng-repeat="major in stats.demo.majors | orderBy: '-count'">
+        <div class="content">
+          <strong>{{major.name}}</strong> : {{major.count}} ({{major.count / stats.submitted * 100 | number: 1}}%)
+        </div>
+      </div>
+    </div>
+    <div class="ui divider"></div>
   </div>
 
 <!--   <div

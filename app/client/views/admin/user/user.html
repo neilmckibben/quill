@@ -105,16 +105,55 @@
       </div>
 
       <div class="field">
-        <label>Graduation Year</label>
+        <label> Major </label>
+        <input class="ui input"
+               name="major"
+               ng-model="selectedUser.profile.major">
+      </div>
+
+      <div class="field">
+        <label>Anticipated Graduation</label>
+        <select
+          name="month"
+          ng-model="selectedUser.profile.graduationMonth">
+          <option value="">Anticipated Graduation Month</option>
+          <option value="January">January</option>
+          <option value="February">February</option>
+          <option value="March">March</option>
+          <option value="April">April</option>
+          <option value="May">May</option>
+          <option value="June">June</option>
+          <option value="July">July</option>
+          <option value="August">August</option>
+          <option value="September">September</option>
+          <option value="October">October</option>
+          <option value="November">November</option>
+          <option value="December">December</option>
+        </select>
+      </div>
+
+      <div class="field">
         <select
           name="year"
           ng-model="selectedUser.profile.graduationYear">
-          <option value="">Graduation Year</option>
+          <option value="">Anticipated Graduation Year</option>
           <option value="2018">2018</option>
           <option value="2019">2019</option>
           <option value="2020">2020</option>
           <option value="2021">2021</option>
           <option value="2022">2022</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <select
+          name="degree"
+          ng-model="selectedUser.profile.degree">
+          <option value="">Anticipated Degree</option>
+          <option value="Associates">Associate's</option>
+          <option value="Bachelors">Bachelor's</option>
+          <option value="Masters">Master's</option>
+          <option value="Doctorate">Doctorate</option>
         </select>
       </div>
 

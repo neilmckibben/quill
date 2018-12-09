@@ -25,10 +25,30 @@ var profile = {
     max: 150,
   },
 
+  major: {
+    type: String,
+    min: 1,
+    max: 150,
+  },
+
+  graduationMonth: {
+    type: String,
+    enum: {
+      values: 'January February March April May June July August September October November December'.split(' '),
+    }
+  },
+
   graduationYear: {
     type: String,
     enum: {
       values: '2018 2019 2020 2021 2022'.split(' '),
+    }
+  },
+
+  degree: {
+    type: String,
+    enum: {
+      values: 'Associates Bachelors Masters Doctorate'.split(' '),
     }
   },
 
@@ -333,7 +353,10 @@ schema.statics.validateProfile = function(profile, cb){
     profile.name.length > 0 &&
     profile.adult &&
     profile.school.length > 0 &&
+    profile.major.length > 0 &&
+    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].indexOf(profile.graduationMonth) > -1 &&
     ['2018', '2019', '2020', '2021', '2022'].indexOf(profile.graduationYear) > -1 &&
+    ['Associates', 'Bachelors', 'Masters', 'Doctorate'].indexOf(profile.graduationYear) > -1 &&
     ['M', 'F', 'O', 'N'].indexOf(profile.gender) > -1
     ));
 };
