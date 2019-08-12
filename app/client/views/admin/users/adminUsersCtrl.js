@@ -326,6 +326,9 @@ angular.module('reg')
                 name: 'Hardware Requested',
                 value: user.confirmation.hardware
               },{
+                name: 'Laptop Requested',
+                value: user.confirmation.wantsLaptop
+              },{
                 name: 'Additional Notes',
                 value: user.confirmation.notes
               }

@@ -95,6 +95,17 @@
             <input type="text" ng-model="user.confirmation.hardware">
           </div>
 
+          <div class="field">
+            <label>We will have a limited number of MacBooks availabe if you will be developing in Swift or do not have a suitable device</label>
+            <select
+              name="wantsLaptop"
+              ng-model="user.confirmation.wantsLaptop">
+              <option value="">Laptop Status</option>
+              <option value="No">I do not want a laptop</option>
+              <option value="Yes">I want a laptop</option>
+            </select>
+          </div>
+
 
           <br>
           <br>

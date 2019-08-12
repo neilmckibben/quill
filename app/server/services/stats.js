@@ -92,6 +92,10 @@ function calculateStats(){
     reimbursementMissing: 0,
 
     wantsHardware: 0,
+    wantsLaptop: {
+      'Yes': 0,
+      'No': 0
+    },
 
     checkedIn: 0
   };
@@ -146,6 +150,10 @@ function calculateStats(){
         // Count the number of people who want hardware
         newStats.wantsHardware += user.confirmation.wantsHardware ? 1 : 0;
 
+        // //Count the number of people who want Laptop
+        if (user.confirmation.wantsLaptop in newStats.wantsLaptop){
+          newStats.wantsLaptop[user.confirmation.wantsLaptop] += 1;
+        }
         // Count schools
         if (!newStats.demo.schools[email]){
           newStats.demo.schools[email] = {
